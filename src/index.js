@@ -41,54 +41,54 @@ import ConsumptionPatternReport from './components/reports/consumptionPattern';
 import TamperReport from './components/reports/tamperdata';
 
 const createStoreWithMiddleware = compose(applyMiddleware(
-		promiseMiddleware(), // resolves promises
-	    loadingBarMiddleware(), // manages loading bar
-	    createLogger(), // log actions in console
+	promiseMiddleware(), // resolves promises
+	loadingBarMiddleware(), // manages loading bar
+	createLogger(), // log actions in console
 ))(createStore);
 export const store = createStoreWithMiddleware(reducers);
 
 ReactDOM.render(
 
-  <Provider store={store}>
+	<Provider store={store}>
 
-	<BrowserRouter>
-		<div>
-				<InitiateStore/>
+		<BrowserRouter>
+			<div>
+				<InitiateStore />
 				<LoadingBar showFastActions />
-		    <HeaderCustomerView/>
-				<div id="page-wrapper">
-					<div className="container-fluid">
-					  <Switch>
-						<Route path="/timeseries" component={ReportTimeSeries}/>
-						<Route path="/manage/devices" component={DeviceAdmin}/>
-						<Route path="/manage/property_type" component={PropertyTypeAdmin}/>
-						<Route path="/manage/property" component={PropertyAdmin}/>
-						<Route path="/manage/user" component={UserAdmin}/>
-						<Route path="/manage/site" component={SiteAdmin}/>
-						<Route path="/manage/device_profile" component={DeviceProfileAdmin}/>
-						<Route path="/manage/customer" component={CustomerAdmin}/>
-						<Route path="/manage/role" component={RoleAdmin}/>
-						<Route path="/manage/hierarchy" component={PropertyLocationTypeAdmin}/>
-						<Route path="/reports/consumption" component={ConsumptionReport}/>
-						<Route path="/reports/consumption_pattern" component={ConsumptionPatternReport}/>
-						<Route path="/reports/tamperdata" component={TamperReport}/>
+				<HeaderCustomerView />
+				<div >
+					<div >
+						<Switch>
+							<Route path="/timeseries" component={ReportTimeSeries} />
+							<Route path="/manage/devices" component={DeviceAdmin} />
+							<Route path="/manage/property_type" component={PropertyTypeAdmin} />
+							<Route path="/manage/property" component={PropertyAdmin} />
+							<Route path="/manage/user" component={UserAdmin} />
+							<Route path="/manage/site" component={SiteAdmin} />
+							<Route path="/manage/device_profile" component={DeviceProfileAdmin} />
+							<Route path="/manage/customer" component={CustomerAdmin} />
+							<Route path="/manage/role" component={RoleAdmin} />
+							<Route path="/manage/hierarchy" component={PropertyLocationTypeAdmin} />
+							<Route path="/reports/consumption" component={ConsumptionReport} />
+							<Route path="/reports/consumption_pattern" component={ConsumptionPatternReport} />
+							<Route path="/reports/tamperdata" component={TamperReport} />
 
-						<Route path="/manage/configuration_setting" component={ConfigurationSettingAdmin}/>
-						<Route path="/dashboard" render={() => (
-							  store.getState()['authentications']['userAuthenticated']==true ? (
-							    <DashBoard />
-							  ) : (
-									<Redirect to="/"/>
-							  ))}/>
+							<Route path="/manage/configuration_setting" component={ConfigurationSettingAdmin} />
+							<Route path="/dashboard" render={() => (
+								store.getState()['authentications']['userAuthenticated'] == true ? (
+									<DashBoard />
+								) : (
+										<Redirect to="/" />
+									))} />
 
-							<Route path="/signout" component={SignOut}/>
-					    <Route path="/" component={LoginIndex} />
-					  </Switch>
+							<Route path="/signout" component={SignOut} />
+							<Route path="/" component={LoginIndex} />
+						</Switch>
 					</div>
 				</div>
-		    <FooterView/>
+				<FooterView />
 			</div>
-	</BrowserRouter>
+		</BrowserRouter>
 
-  </Provider>
-  , document.querySelector('.outer-container'));
+	</Provider>
+	, document.querySelector('.outer-container'));

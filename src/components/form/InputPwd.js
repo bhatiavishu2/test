@@ -7,11 +7,9 @@ const InputPwd = (props) =>{
     const className = `form-group ${touched && error ? 'has-danger' : ''}`;
     return (
       <div className={className}>
-        <label className="col-sm-4 control-label">{props.label}</label>
-        <div className="col-sm-8">
-         <input type="password" placeholder={props.placeholder} id={props.id} className={props.className} maxLength="16" {...props.input}/>
-          {touched && error && <span className="error text-help">{error}</span>}
-        </div>
+        <label>{props.label}</label>
+         <input type="password" placeholder={props.placeholder} className={props.className} maxLength={props.maxLength} {...props.input}/>
+         {touched && error && <span className="error text-help">{error}</span>}
       </div>
     );
 };

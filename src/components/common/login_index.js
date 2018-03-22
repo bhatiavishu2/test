@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import { Field, reduxForm } from 'redux-form';
-import { bindActionCreators} from 'redux';
-import { signIn,searchSites,searchCustomer,getRole } from '../../actions/authentications';
+import { bindActionCreators } from 'redux';
+import { signIn, searchSites, searchCustomer, getRole } from '../../actions/authentications';
 import { Redirect } from 'react-router'
 import InputEmail from '../form/InputEmail';
-import InputPwdWithoutLabel from '../form/InputPwdWithoutLabel';
+import InputPwd from '../form/InputPwd';
 
 class LoginIndex extends Component {
   constructor(props) {
@@ -21,18 +21,19 @@ class LoginIndex extends Component {
 
   signinSubmit(values) {
     this.props.signIn(values).then(() => {
-      if(this.props.authentications.userAuth.user_summary.userType!=1) {
+      if (this.props.authentications.userAuth.user_summary.userType != 1) {
         const request = {
-          q:"",
-          pageNumber:0,
-          pageSize:100000,
-          sortBy:"createdDate",
-          sortDirection:"desc"
+          q: "",
+          pageNumber: 0,
+          pageSize: 100000,
+          sortBy: "createdDate",
+          sortDirection: "desc"
         };
-        this.props.searchCustomer(request).then(() => {;
+        this.props.searchCustomer(request).then(() => {
+          ;
           this.props.searchSites(request);
           this.props.getRole(this.props.authentications.userAuth.user_summary.roleId);
-      });
+        });
       }
 
     });
@@ -68,82 +69,78 @@ class LoginIndex extends Component {
         </div>
       </div>
     );
-    }
-  render(){
+  }
+  render() {
     const { handleSubmit } = this.props;
 
-    if(this.props.userAuthenticated === true){
-        if(this.props.authentications.userAuth.user_summary.userType==1) {
-          return <Redirect to='/manage/customer'/>;
-        } else {
-          return <Redirect to='/dashboard'/>;
-        }
+    if (this.props.userAuthenticated === true) {
+      if (this.props.authentications.userAuth.user_summary.userType == 1) {
+        return <Redirect to='/manage/customer' />;
+      } else {
+        return <Redirect to='/dashboard' />;
+      }
     }
-      return (
-        <div>
-        <div className="row">
-          <div className="col-xs-12 col-sm-6 col-sm-offset-2">
-            <div className="loginLogoBar">
-             <img src="/images/tata-communication.png" className="img-responsive" alt="Tata Communication" width="633" height="44"/>
+    return (
+      <div className="loginWrap">
+        <div className="container-fluid">
+          <div className="row clearfix">
+            <div className="col-md-9 col-sm-8 col-xs-12 p-l-0 mobileWelcome">
+              <div className="l-detail">
+                {/* <h5>Welcome</h5> */}
+                <img src="/images/tata-login-logo.png" className="img-responsive" alt="Tata Communication" width={550} height={41} />
+                <h3>Smart Metering Application</h3>
+              </div>
             </div>
-            <div className="page-titles OuterPageTitle outerLoginTitle clearfix">
-      				<div className="col-md-9 align-self-center addCust">
-      					<h3 className="text-themecolor">Login</h3>
-      				</div>
-            </div>
-          </div>
-  			</div>
-        <div className="row">
-        <form className="formHorizontal" onSubmit={handleSubmit(this.signinSubmit.bind(this))} className="authnflds" id="signinuser" acceptCharset="utf-8">
-        <div className="col-xs-12">
-          <div className="custAddForm">
-              <div className="formContainer">
-                <div className="col-xs-12 col-sm-6 col-sm-offset-2">
-                  <div className="formWraper formWraperLogin">
-                    <Field name="username" autoComplete="off" className="form-control" placeholder="Your Email ID" maxLength="500" component={InputEmail}/>
-                    <Field name="password"   autoComplete="off" className="form-control" placeholder="Your Password" maxLength="50" component={InputPwdWithoutLabel}/>
-                    <div className="form-group">
-										    <div className="saveButtons text-right">
-                          <div className="clearfix"></div>
-                              { this.props.showLoginFailedMessage &&
-                              <div className="col-md-12 error">
-                                Invalid username or password.
+            <div className="col-md-3 col-sm-4 col-xs-12 p-r-0">
+              <div className="card position">
+                <div className="cardWrapInner">
+                  <h4 className="l-login">Login</h4>
+                  <form className="loginForm" >
+                    <Field name="username" autoComplete="off" className="form-control" label="Username" maxLength="500" component={InputEmail} />
+                    <Field name="password" autoComplete="off" className="form-control" maxLength="50" label="Password" component={InputPwd} />
+                    <div className="form-label">
+                      <label htmlFor="rememberme" className="rememberPass">
+                        <input type="checkbox" name="rememberme" id="rememberme" />
+                        Remember Me
+                      </label>
+                    </div>
+                    {this.props.showLoginFailedMessage &&
+                      <div className="col-md-12 error">
+                        Invalid username or password.
                               </div>
-                              }
-										      	<input type="submit" className="btn btn-primary" defaultValue="Login"/>
-										      	<input type="reset" className="btn btn-warning" defaultValue="Reset"/>
-										    </div>
-									    </div>
-                  </div>
+                    }
+                    <a onClick={handleSubmit(this.signinSubmit.bind(this))} className="btn btn-primary" type="submit">Login</a>
+                    <div className="forgotPassword text-left"><a href="#">Forgot Password?</a></div>
+                  </form>
                 </div>
               </div>
+            </div>
           </div>
         </div>
-        </form>
+        <div id="instance1"><canvas width={1322} height={600} /></div>
       </div>
-    </div>
-      );
+    );
   }
 }
 function mapStateToProps(state) {
   //console.log(state);
   return {
-      authentications: state.authentications,
-      userAuthenticated: state.authentications.userAuthenticated,
-      showLoginFailedMessage: state.authentications.showLoginFailedMessage,
-      popover: 'popover',
-      tooltip: 'tooltip'
-      //showModal:this.state.showModal,
+    authentications: state.authentications,
+    userAuthenticated: state.authentications.userAuthenticated,
+    showLoginFailedMessage: state.authentications.showLoginFailedMessage,
+    popover: 'popover',
+    tooltip: 'tooltip'
+    //showModal:this.state.showModal,
   };
 }
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
       signIn: signIn,
-      searchSites:searchSites,
-      searchCustomer:searchCustomer,
-      getRole:getRole
-  },dispatch);
+      searchSites: searchSites,
+      searchCustomer: searchCustomer,
+      getRole: getRole
+    }, dispatch);
 }
 //export default connect(mapStateToProps, mapDispatchToProps)(LoginModal);
 function validate(values) {
@@ -167,4 +164,4 @@ export default reduxForm({
   form: 'LoginIndex'
 })(
   connect(mapStateToProps, mapDispatchToProps)(LoginIndex)
-);
+  );
