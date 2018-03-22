@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="icon" href="/images/favicon.png">
+    <link rel="stylesheet" href="/style/bootstrap.min.css"/>
+    
+    <link rel="stylesheet" href="/style/react-select.css"/>
+    <link rel="stylesheet" href="/style/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" href="/style/react-widgets.css">
+	<link rel="stylesheet" href="/style/mixer.css"/>
+    <script src="/js/jquery-1.12.4.js"></script>
+    <script src="/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+
+    <script src="/js/jscolor.min.js"></script>
+    <style>
+    /*.navbar-default{background-color: #FFFFFF!important;}*/
+    .mainMenuContainer{width: 350px;margin-top:12px;}
+    .xpadding-0{padding-left: 0px;}.xpadding-1{padding-left: 20px;}.xpadding-2{padding-left: 40px;}.xpadding-3{padding-left: 60px;}.xpadding-4{padding-left: 80px;}.xpadding-5{padding-left: 100px;}.xpadding-6{padding-left: 120px;}.xpadding-7{padding-left: 140px;}.xpadding-8{padding-left: 160px;}.xpadding-9{padding-left: 180px;}.xpadding-10{padding-left: 200px;}.xpadding-11{padding-left: 220px;}.xpadding-12{padding-left: 240px;}.xpadding-13{padding-left: 260px;}.xpadding-14{padding-left: 280px;}.xpadding-15{padding-left: 300px;}.xpadding-16{padding-left: 320px;}.xpadding-17{padding-left: 340px;}.xpadding-18{padding-left: 360px;}.xpadding-19{padding-left: 380px;}.xpadding-20{padding-left: 400px;}.xpadding-21{padding-left: 420px;}.xpadding-22{padding-left: 440px;}.xpadding-23{padding-left: 460px;}.xpadding-24{padding-left: 480px;}.xpadding-25{padding-left: 500px;}.xpadding-26{padding-left: 520px;}.xpadding-27{padding-left: 540px;}.xpadding-28{padding-left: 560px;}.xpadding-29{padding-left: 580px;}.xpadding-30{padding-left: 600px;}.xpadding-31{padding-left: 620px;}.xpadding-32{padding-left: 640px;}.xpadding-33{padding-left: 660px;}.xpadding-34{padding-left: 680px;}.xpadding-35{padding-left: 700px;}.xpadding-36{padding-left: 720px;}.xpadding-37{padding-left: 740px;}.xpadding-38{padding-left: 760px;}.xpadding-39{padding-left: 780px;}.xpadding-40{padding-left: 800px;}.xpadding-41{padding-left: 820px;}.xpadding-42{padding-left: 840px;}.xpadding-43{padding-left: 860px;}.xpadding-44{padding-left: 880px;}.xpadding-45{padding-left: 900px;}.xpadding-46{padding-left: 920px;}.xpadding-47{padding-left: 940px;}.xpadding-48{padding-left: 960px;}.xpadding-49{padding-left: 980px;}.xpadding-50{padding-left: 1000px;}.xpadding-51{padding-left: 1020px;}.xpadding-52{padding-left: 1040px;}.xpadding-53{padding-left: 1060px;}.xpadding-54{padding-left: 1080px;}.xpadding-55{padding-left: 1100px;}.xpadding-56{padding-left: 1120px;}.xpadding-57{padding-left: 1140px;}.xpadding-58{padding-left: 1160px;}.xpadding-59{padding-left: 1180px;}.xpadding-60{padding-left: 1200px;}.xpadding-61{padding-left: 1220px;}.xpadding-62{padding-left: 1240px;}.xpadding-63{padding-left: 1260px;}.xpadding-64{padding-left: 1280px;}.xpadding-65{padding-left: 1300px;}.xpadding-66{padding-left: 1320px;}.xpadding-67{padding-left: 1340px;}.xpadding-68{padding-left: 1360px;}.xpadding-69{padding-left: 1380px;}.xpadding-70{padding-left: 1400px;}.xpadding-71{padding-left: 1420px;}.xpadding-72{padding-left: 1440px;}.xpadding-73{padding-left: 1460px;}.xpadding-74{padding-left: 1480px;}.xpadding-75{padding-left: 1500px;}.xpadding-76{padding-left: 1520px;}.xpadding-77{padding-left: 1540px;}.xpadding-78{padding-left: 1560px;}.xpadding-79{padding-left: 1580px;}.xpadding-80{padding-left: 1600px;}.xpadding-81{padding-left: 1620px;}.xpadding-82{padding-left: 1640px;}.xpadding-83{padding-left: 1660px;}.xpadding-84{padding-left: 1680px;}.xpadding-85{padding-left: 1700px;}.xpadding-86{padding-left: 1720px;}.xpadding-87{padding-left: 1740px;}.xpadding-88{padding-left: 1760px;}.xpadding-89{padding-left: 1780px;}.xpadding-90{padding-left: 1800px;}.xpadding-91{padding-left: 1820px;}.xpadding-92{padding-left: 1840px;}.xpadding-93{padding-left: 1860px;}.xpadding-94{padding-left: 1880px;}.xpadding-95{padding-left: 1900px;}.xpadding-96{padding-left: 1920px;}.xpadding-97{padding-left: 1940px;}.xpadding-98{padding-left: 1960px;}.xpadding-99{padding-left: 1980px;}
+
+    </style>
+  </head>
+  <body>
+    <div class="outer-container" id="wrapper"></div>
+    <script src="/bundle.js?v=1"></script>
+
+  </body>
+
+</html>
