@@ -95,7 +95,7 @@ class LoginIndex extends Component {
               <div className="card position">
                 <div className="cardWrapInner">
                   <h4 className="l-login">Login</h4>
-                  <form className="loginForm" >
+                  <form className="loginForm" onSubmit={handleSubmit(this.signinSubmit.bind(this))} >
                     <Field name="username" autoComplete="off" className="form-control" label="Username" maxLength="500" component={InputEmail} />
                     <Field name="password" autoComplete="off" className="form-control" maxLength="50" label="Password" component={InputPwd} />
                     <div className="form-label">
@@ -109,7 +109,7 @@ class LoginIndex extends Component {
                         Invalid username or password.
                               </div>
                     }
-                    <a onClick={handleSubmit(this.signinSubmit.bind(this))} className="btn btn-primary" type="submit">Login</a>
+                    <input className="btn btn-primary" value="Login" type="submit"/>
                     <div className="forgotPassword text-left"><a href="#">Forgot Password?</a></div>
                   </form>
                 </div>

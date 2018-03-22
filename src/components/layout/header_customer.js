@@ -57,7 +57,7 @@ class HeaderCustomerView extends Component {
             <span className="icon-bar" />
             <span className="icon-bar" />
           </button>
-          <a className="navbar-brand" href="index.html"><img src="/images/tata-communication.png" className="img-responsive" alt="Tata Communication" width={633} height={44} /></a>
+          <a className="navbar-brand" href="/"><img src="/images/tata-communication.png" className="img-responsive" alt="Tata Communication" width={633} height={44} /></a>
         </div>
         {/* /.navbar-header */}
         <ul className="navbar-left mainLinks">
